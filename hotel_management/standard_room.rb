@@ -2,10 +2,10 @@
 
 module HotelManagement
   class StandardRoom < Room
-    def initialize(name:)
+    def initialize(name:, price:)
       super
       @ac = false
-      @price = 1000
+      @price = price.nil? ? 1000 : price
     end
   end
 end
