@@ -6,7 +6,7 @@ require './hotel_management/deluxe_room'
 module HotelManagement
   describe DeluxeRoom do
     describe '#create' do
-      room1 = HotelManagement::DeluxeRoom.create(name: 'room1', price: '2000', type: 'Comfortable')
+      room1 = HotelManagement::DeluxeRoom.create(name: 'room1')
 
       it 'should list under all' do
         expect(HotelManagement::Room.all).to include(room1)
@@ -18,6 +18,10 @@ module HotelManagement
 
       it 'ac should be true' do
         expect(room1.ac).to be_truthy
+      end
+
+      it 'price should be 2000' do
+        expect(room1.price).to eq(2000)
       end
     end
   end

@@ -6,7 +6,7 @@ require './hotel_management/customer'
 module HotelManagement
   describe Room do
     describe '#create' do
-      room1 = HotelManagement::Room.create(name: 'room1', price: '2000', type: 'Comfortable')
+      room1 = HotelManagement::Room.create(name: 'room1')
 
       it 'should list under all' do
         expect(HotelManagement::Room.all).to include(room1)
@@ -15,11 +15,15 @@ module HotelManagement
       it 'should list under available' do
         expect(HotelManagement::Room.available).to include(room1)
       end
+
+      it 'price should be 500' do
+        expect(room1.price).to eq(500)
+      end
     end
 
     describe 'check_in' do
-      room1 = HotelManagement::Room.create(name: 'room1', price: '2000', type: 'Comfortable')
-      customer1 = HotelManagement::Customer.create(name: 'Cust 1', address: 'Address', phone_number: 'phone_number', proof: '123232')
+      room1 = HotelManagement::Room.create(name: 'room1')
+      customer1 = HotelManagement::Customer.create(name: 'st 1', address: 'Address', phone_number: 'phone_number', proof: '123232')
 
       before do
         room1.check_in(customer: customer1)
@@ -39,7 +43,7 @@ module HotelManagement
     end
 
     describe 'check_out' do
-      room1 = HotelManagement::Room.create(name: 'room1', price: '2000', type: 'Comfortable')
+      room1 = HotelManagement::Room.create(name: 'room1')
       customer1 = HotelManagement::Customer.create(name: 'Cust 1', address: 'Address', phone_number: 'phone_number', proof: '123232')
 
       before do

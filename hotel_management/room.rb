@@ -3,12 +3,11 @@
 module HotelManagement
   class Room
     @@rooms = []
-    attr_accessor :name, :price, :type, :checked_in, :customer, :ac
+    attr_accessor :name, :price, :checked_in, :customer, :ac
 
-    def initialize(name:, price:, type:)
+    def initialize(name:)
       @name = name
-      @price = price
-      @type = type
+      @price = 500
       @checked_in = false
     end
 
@@ -27,8 +26,8 @@ module HotelManagement
     end
 
     class << self
-      def create(name:, price:, type:)
-        room = new(name: name, price: price, type: type)
+      def create(name:)
+        room = new(name: name)
         @@rooms << room
 
         room
